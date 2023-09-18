@@ -2,7 +2,12 @@
 import { PostsRepository } from "../repositories/posts.repository.js"
 
 export class PostsService {
-    postsRepository = new PostsRepository();
+    //# 의존성 주입
+    // postsRepository = new PostsRepository();
+    constructor(postsRepository) {
+        this.postsRepository = postsRepository;
+    }
+
 
     //* 게시글 조회 API
     findAllPosts = async () => {
