@@ -18,6 +18,10 @@ export class PostsController {
             // 클라이언트에개 전달받은 데이터를 객체구조 분해 할당 함.
             const { nickname, password, title, content } = req.body;
 
+            if(!nickname || !password || !title || !content) {
+                throw new Error("InvalidParamsError");
+            }
+
             const createPost = await this.postsService.createPost(
                 nickname, password, title, content
             );
